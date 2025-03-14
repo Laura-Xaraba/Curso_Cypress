@@ -5,12 +5,11 @@ describe('Cadastro incompleto na plataforma Adopet', () => {
 	});
 
 	it('Deve preencher os campos de cadastro incorretamente eexibir mensagem ao usuário', () => {
-		cy.get('[data-test="input-name"]').type('Ana Clara de Jesus');
-		cy.get('[data-test="submit-button"]').click();
-		cy.contains('É necessário informar um endereço de email').should(
-			'be.visible'
+		cy.cadastro_incorreto('Ana de Jesus');
+		cy.verif_msg_cadastro(
+			'É necessário informar um endereço de email',
+			'Crie uma senha',
+			'Repita a senha criada acima'
 		);
-		cy.contains('Crie uma senha').should('be.visible');
-		cy.contains('Repita a senha criada acima').should('be.visible');
 	});
 });
